@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/frontend ::head(~{title}, ~{links})">
+</head>
+
+<body style="display:flex; flex-direction: column; min-height: 100vh;">
+    <nav th:replace="layout/frontend ::nav"></nav>
+
+    <main class="container mb-5">
+        <h2 class="container m-4">Lista De Compras</h2>
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Nro Comprobante</th>
+                <th scope="col">Fecha Compra</th>
+                <th scope="col">Impuesto Compra</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+              </tr> 
+            </thead>
+            <tbody>
+              <tr th:each="venta:${ventas}">
+                <th th:text="${venta.id_venta}">1</th>
+                <td th:text="${venta.producto.nombre}">Mark</td>
+                <td th:text="${venta.num_comprobante}">Otto</td>
+                <td th:text="${venta.fecha}">@mdo</td>
+                <td th:text="${venta.impuesto}">@mdo</td>
+                <td th:text="${venta.total}">@mdo</td>
+                <td><a th:href="@{/venta/eliminar/} + ${venta.id_venta}" style="text-decoration: none; color: tomato; font-weight: bold;">Cancelar</a></td>
+              </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <!--MENSAJE-->
+    <div th:class="'toast ' + ${accesoTrue} + ' sticky-top bottom-0'" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="toast-header">
+            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" th:fill="${color}"></rect>
+            </svg>
+            <strong class="me-auto">Mensaje</strong>
+            <small>Justo ahora</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" th:text="${mensaje}">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+
+    
+    <!--FOOTER
+    <div style="margin: auto; width: 100%;" >
+        <footer th:replace="layout/frontend :: pie-de-pagina"></footer>
+    </div>
+    -->
+    
+    <footer th:replace="layout/frontend :: script"></footer>
+</body>
+
+</html>

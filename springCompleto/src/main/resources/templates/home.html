@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/frontend :: head(~{links},~{title})">
+</head>
+
+<body>
+    <nav th:replace="layout/frontend :: nav"></nav>
+
+    <main class="scroll-reveal">
+        <div class="text-start text-dark container d-flex" style="position: relative; top: 11em;">
+            <div class="texto scroll1">
+                <h1 class="fs-1 texto">Shopping.</h1>
+                <p class="fs-4 fw-semibold mb-3 texto">Tu tienda online. Estar más allá de la moda, ese es nuestro <br>arquetipo de
+                    estilo.</p>
+                <p><a class="btn btn-lg btn-primary fs-4 texto boton" href="#">¡Comencemos!</a></p>
+            </div>
+            <div class="scroll2">
+                <img th:src="@{'/img/ropa-inicio-' + ${num} + '.png'}" alt="camisa-deportiva"
+                    style="position: absolute; top: -85%; right: 5%;" class="img-principal">
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#5000ca" fill-opacity="1"
+                d="M0,192L48,197.3C96,203,192,213,288,218.7C384,224,480,224,576,186.7C672,149,768,75,864,53.3C960,32,1056,64,1152,85.3C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#5000ca" fill-opacity="1"
+                d="M0,64L120,53.3C240,43,480,21,720,16C960,11,1200,21,1320,26.7L1440,32L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z">
+            </path>
+        </svg>
+    </main>
+
+    <!--NAV CATEGO-->
+    <section th:replace="layout/frontend :: nav2"></section>
+
+    <!--PRODUCTOS-->
+    <section class="mb-4 container scroll3" style="position: relative; top: -5em;">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="page-header" >Productos Destacados</h3>
+            </div>
+        </div>
+
+        <!-- /.row -->      
+        <hr style="margin-bottom: 35px;">
+
+        <div class="row">
+            <div class="col-md-3 col-6 product-block" th:each="producto:${listaProdu}">
+                <img class="img-fluid img-portfolio img-hover mb-3" th:src="@{'/imagenesP/'} + ${producto.imagen}"
+                    alt="Wacom Bamboo Tablet">
+    
+                <div class="caption">
+                    <h5 th:text="${producto.nombre}">Wacom Bamboo Tablet</h5>
+                    <div class="price-mob mb-2" th:text="${producto.precio}">
+                        $100.000
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <a th:href="@{/producto/consultar/} + ${producto.id_producto}" class="btn btn-primary mb-4">Saber
+                    más.</a>
+            </div>
+        </div>
+    </section>
+
+    <!--MENSAJE-->
+    <div th:class="'toast ' + ${accesoTrue} + ' sticky-top bottom-0'" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="toast-header">
+            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" th:fill="${color}"></rect>
+            </svg>
+            <strong class="me-auto">Mensaje</strong>
+            <small>Justo ahora</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" th:text="${mensaje}">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <footer th:replace="layout/frontend :: pie-de-pagina"></footer>
+
+
+    <!--SCRIPTS-->
+    <div th:replace="layout/frontend :: script"></div>
+</body>
+
+</html>

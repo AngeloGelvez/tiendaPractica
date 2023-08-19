@@ -1,0 +1,48 @@
+@media screen and (max-width: 1400px) {
+    .img-principal {
+        width: 380px !important; 
+        height: auto !important;
+    }
+
+    .texto {
+        font-size: 23px !important;
+    }
+
+    .boton {
+        padding: 8px !important;
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .img-principal {
+        width: 300px !important; 
+        height: auto !important;
+    }
+
+    .texto {
+        font-size: 20px !important;
+    }
+
+    .boton {
+        padding: 6px !important;
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .img-principal {
+        visibility: hidden !important;
+    }
+
+    .texto {
+        font-size: 24px !important;
+        text-align: center;
+        margin: auto;
+    }
+
+    .boton {
+        padding: 8px !important;
+        font-size: 18px !important;
+    }
+}

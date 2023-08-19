@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/frontend :: head(~{title},~{links})">
+</head>
+
+<body>
+    <nav th:replace="layout/frontend :: nav">
+    </nav>
+
+    <main class="d-flex">
+        <div>
+            <img th:src="@{/img/gafas.jpeg}" alt="fruta tomando el sol">
+        </div>
+
+        <div class="container">
+            <h2 style="margin: 20px 0px;">Creación de la categoria</h2>
+            <form th:action="@{/categoria/crear}" method="post" th:object="${categoria}" style="margin: 20px 0px;">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nombre de la categoria</label>
+                    <input class="form-control mb-4" id="exampleFormControlInput1" th:field="*{nombre}">
+                    <div class="alert alert-danger" th:if="${errores != null && errores.containsKey('nombre')}"
+                        th:text="${errores.nombre}"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripción de la categoria</label>
+                    <textarea class="form-control mb-4" id="exampleFormControlTextarea1" rows="3"
+                        th:field="*{descripcion}"></textarea>
+                    <div class="alert alert-danger" th:if="${errores != null && errores.containsKey('descripcion')}"
+                        th:text="${errores.descripcion}"></div>
+                </div>
+                <button type="submit" class="btn btn-success">Crear categoria</button>
+            </form>
+        </div>
+    </main>
+
+    <!--MENSAJE-->
+    <div th:class="'toast ' + ${accesoTrue} + ' sticky-top bottom-0'" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" th:fill="${color}"></rect></svg>
+          <strong class="me-auto">Mensaje</strong>
+          <small>Justo ahora</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" th:text="${mensaje}">
+          Hello, world! This is a toast message.
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <footer th:replace="layout/frontend :: pie-de-pagina"></footer>
+
+    <div th:replace="layout/frontend :: script"></div>
+</body>
+
+</html>

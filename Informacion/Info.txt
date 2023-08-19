@@ -1,0 +1,9 @@
+Plantilla
+https://getbootstrap.com/docs/5.3/examples/cover/
+https://getbootstrap.com/docs/5.3/examples/
+
+Spring Boot Thymeleaf
+PostgreSQL
+HTML 
+CSS
+JAVASCRIPT CON EL SCROLL REVEAL
