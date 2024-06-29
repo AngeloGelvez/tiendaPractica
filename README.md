@@ -28,3 +28,5 @@ Definimos la URL, el nombre de usuario y la contraseña.
 - Creación de Tablas:
 Creamos tablas para almacenar productos, usuarios y pedidos.
 Especificamos las relaciones entre las tablas (claves primarias y foráneas).
+
+[![screencapture-localhost-8080-2024-06-29-14-55-40.png](https://i.postimg.cc/Rhg2Y1NR/screencapture-localhost-8080-2024-06-29-14-55-40.png)](https://postimg.cc/tnVrZxdZ)
